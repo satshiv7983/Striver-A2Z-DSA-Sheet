@@ -24,3 +24,28 @@ class Solution:
     
         return sign * res
     
+   # recursive solution
+
+class Solution:
+    # your task is to complete this function
+    # function should return an integer
+    def atoi(self,string):
+        if not string.strip('-').isnumeric():
+                return -1
+        if len(string)-len(string.strip('-'))>=2:
+            return -1
+        def recur(string,num):
+            if string.isalpha():
+                return -1
+            
+            if len(string)==1:
+                return int(string)+num*10
+            
+            num=int(string[:1])+num*10
+            
+            return recur(string[1:],num)
+        if string[0]=='-':
+            return -1*recur(string[1:],0)
+        return recur(string,0)
+                
+
